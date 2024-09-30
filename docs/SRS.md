@@ -103,7 +103,7 @@
 
 Окно с детализированной информацией о растении.
 
-![image](https://github.com/user-attachments/assets/32b4847f-cf03-429e-b380-e0b2991e9a3e)
+![image](https://github.com/user-attachments/assets/2e2139e6-bd24-4314-ab63-0806ca70b397)
 
 Окно с графиками
 
