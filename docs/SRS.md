@@ -82,14 +82,36 @@
 
 ## 2.2 Интерфейс пользователя
 Главное окно приложения.  
+
+![image](https://github.com/user-attachments/assets/ffa33659-d331-458b-93b4-e00afd58d454)
+
 Окно входа или регистрации нового пользователя.  
+
+![image](https://github.com/user-attachments/assets/6623e025-3f67-42f1-bd0f-62115397459d)
+
 Окно просмотра календарей.
+
+![image](https://github.com/user-attachments/assets/b2c33bd1-307b-477b-b49c-93e3e762b88e)
+
 Окно просмотра детализированной информации о дате в календаре.
-Окно с добавлением календаря.
+
+![image](https://github.com/user-attachments/assets/74adf21b-37ab-4eee-bd99-eeed648ba76c)
+
 Окно со списком растений.  
+
+![image](https://github.com/user-attachments/assets/ab0f8e07-3000-447f-8930-8303b63c3517)
+
 Окно с детализированной информацией о растении.
-Окно с добавлением информации в статистику.
+
+![image](https://github.com/user-attachments/assets/32b4847f-cf03-429e-b380-e0b2991e9a3e)
+
 Окно с графиками
+
+![image](https://github.com/user-attachments/assets/f83ac2ff-a8bc-4b74-a0e0-bd69f170af7b)
+
+Окно с добавлением информации в статистику.
+
+![image](https://github.com/user-attachments/assets/d4072667-0c22-4c80-9fc7-e9337a01318a)
 
 <a name="user_specifications"/>
 
