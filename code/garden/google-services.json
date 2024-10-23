@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "690202488948",
+    "project_id": "gardenapp-880f4",
+    "storage_bucket": "gardenapp-880f4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:690202488948:android:ec082f805f7b43fb562121",
+        "android_client_info": {
+          "package_name": "com.company.gardenerapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0bIHrMIKxCdBknGJbfT0bRgSJC4dPlEA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
