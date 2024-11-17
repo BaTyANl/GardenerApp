@@ -23,7 +23,7 @@ private:
 
 private slots:
     void exitButton_clicked();
-    void signButton_clicked();
+    void signButton_clicked();;
 signals:
     void userSigned(const QString& login);
 };

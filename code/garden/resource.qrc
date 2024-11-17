@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>plantsbase.json</file>
+    </qresource>
+</RCC>

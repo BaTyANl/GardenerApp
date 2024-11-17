@@ -2,8 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "regwindow.h"
-#include "signwindow.h"
+#include "accwindow.h"
+#include "calendar.h"
+#include "plants.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -18,18 +19,16 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void loadCurrentUser();
 
 private:
-    RegWindow *regWindow;
-    SignWindow *signWindow;
+    Calendar* calWindow;
+    Plants* plantWindow;
+    AccWindow* accWindow;
     Ui::MainWindow *ui;
-    bool is_signed = false;
 
 private slots:
-    void regButtonclicked();
-    void signButtonclicked();
-    void onUserRegistered(const QString& login);
-    void onUserUnRegistered();
+    void accButtonClicked();
+    void calButtonClicked();
+    void plantButtonClicked();
 };
 #endif // MAINWINDOW_H

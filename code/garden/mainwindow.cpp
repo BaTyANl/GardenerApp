@@ -4,16 +4,15 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-    , regWindow(new RegWindow(this))
-    , signWindow(new SignWindow(this))
+    , accWindow(new AccWindow(this))
+    , calWindow(new Calendar(this))
+    , plantWindow(new Plants(this))
 {
     ui->setupUi(this);
-    ui->labelSigned->hide();
-    ui->exitButton->hide();
-    connect(ui->regButton, &QPushButton::clicked, this, &MainWindow::regButtonclicked);
-    connect(ui->signButton, &QPushButton::clicked, this, &MainWindow::signButtonclicked);
-    connect(ui->exitButton, &QPushButton::clicked, this, &MainWindow::onUserUnRegistered);
-    loadCurrentUser();
+    this->raise();
+    connect(ui->plantButton, &QPushButton::clicked, this, &MainWindow::plantButtonClicked);
+    connect(ui->accButton, &QPushButton::clicked, this, &MainWindow::accButtonClicked);
+    connect(ui->calButton, &QPushButton::clicked, this, &MainWindow::calButtonClicked);
 }
 
 MainWindow::~MainWindow()
@@ -21,48 +20,24 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::onUserRegistered(const QString& login){
-    if (is_signed == false){
-        is_signed = true;
-        ui->labelSigned->setText(login + ",\nВы вошли в аккаунт!");
-        ui->labelSigned->show();
-        ui->exitButton->show();
-        ui->signButton->hide();
-        ui->regButton->hide();
-    }
+void MainWindow::accButtonClicked() {
+    accWindow = new AccWindow(this);
+    accWindow->resize(size());
+    accWindow->show();
+    accWindow->raise();
 }
 
-void MainWindow::regButtonclicked() {
-    connect(regWindow, &RegWindow::userRegistered, this, &MainWindow::onUserRegistered);
-    regWindow->show();
-    regWindow->raise();
+void MainWindow::calButtonClicked() {
+   // connect(signWindow, &SignWindow::userSigned, this, &MainWindow::onUserRegistered);
+    calWindow->show();
+    calWindow->raise();
 }
 
-void MainWindow::signButtonclicked() {
-    connect(signWindow, &SignWindow::userSigned, this, &MainWindow::onUserRegistered);
-    signWindow->show();
-    signWindow->raise();
+void MainWindow::plantButtonClicked() {
+    plantWindow = new Plants(this);
+    plantWindow->resize(size());
+    plantWindow->show();
+    plantWindow->raise();
 }
 
-void MainWindow::onUserUnRegistered(){
-    if (is_signed == true){
-        is_signed = false;
-        QMessageBox::information(this, "Успех", "Вы вышли из аккаунта");
-        ui->labelSigned->hide();
-        ui->exitButton->hide();
-        ui->signButton->show();
-        ui->regButton->show();
-        QFile::remove("current_user.txt");
-    }
-}
 
-void MainWindow::loadCurrentUser(){
-    QFile file("current_user.txt");
-    if (!file.exists())
-        return;
-    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        QString login = file.readLine().split('\n').first();
-        file.close();
-        onUserRegistered(login);
-    }
-}

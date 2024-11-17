@@ -5,6 +5,8 @@
 #include <QMessageBox>
 #include <QFile>
 #include <QMessageBox>
+#include <QLineEdit>
+
 
 namespace Ui {
 class RegWindow;
