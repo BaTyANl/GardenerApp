@@ -4,3 +4,5 @@
 [Требования](https://github.com/BaTyANl/GardenerApp/blob/main/docs/SRS.md)
 
 [Диаграммы](https://github.com/BaTyANl/GardenerApp/tree/main/diagrams)
+
+[Тестирование](https://github.com/BaTyANl/GardenerApp/edit/main/testing)
