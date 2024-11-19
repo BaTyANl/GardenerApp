@@ -5,4 +5,4 @@
 
 [Диаграммы](https://github.com/BaTyANl/GardenerApp/tree/main/diagrams)
 
-[Тестирование](https://github.com/BaTyANl/GardenerApp/edit/main/testing)
+[Тестирование](https://github.com/BaTyANl/GardenerApp/tree/main/tests)
