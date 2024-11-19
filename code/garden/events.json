@@ -1,0 +1,14 @@
+[
+    {
+        "date": "2024-11-20",
+        "events": ["high noon", "собирать potato"]
+    },
+    {
+        "date": "2024-11-22",
+        "events": ["not high noon", "собирать potato второй раз"]
+    },
+    {
+        "date": "2024-12-01",
+        "events": ["not high noon", "собирать potato третий раз"]
+    }
+]

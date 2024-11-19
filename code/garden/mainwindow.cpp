@@ -4,7 +4,7 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-    , accWindow(new AccWindow(this))
+    , accountWin(new AccountWin(this))
     , calWindow(new Calendar(this))
     , plantWindow(new Plants(this))
 {
@@ -21,14 +21,14 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::accButtonClicked() {
-    accWindow = new AccWindow(this);
-    accWindow->resize(size());
-    accWindow->show();
-    accWindow->raise();
+    accountWin = new AccountWin(this);
+    accountWin->resize(size());
+    accountWin->show();
+    accountWin->raise();
 }
 
 void MainWindow::calButtonClicked() {
-   // connect(signWindow, &SignWindow::userSigned, this, &MainWindow::onUserRegistered);
+    calWindow->resize(size());
     calWindow->show();
     calWindow->raise();
 }

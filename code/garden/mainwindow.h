@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "accwindow.h"
+#include "accountwin.h"
 #include "calendar.h"
 #include "plants.h"
 
@@ -23,7 +23,7 @@ public:
 private:
     Calendar* calWindow;
     Plants* plantWindow;
-    AccWindow* accWindow;
+    AccountWin* accountWin;
     Ui::MainWindow *ui;
 
 private slots:

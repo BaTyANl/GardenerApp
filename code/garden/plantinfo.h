@@ -1,21 +1,20 @@
-#ifndef PLANTDIALOG_H
-#define PLANTDIALOG_H
+#ifndef PLANTINFO_H
+#define PLANTINFO_H
 
-#include <QDialog>
+#include <QWidget>
 #include <QString>
 
 namespace Ui {
-class PlantDialog;
+class PlantInfo;
 }
 
-class PlantDialog : public QDialog
+class PlantInfo : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit PlantDialog(QWidget *parent = nullptr);
-    ~PlantDialog();
-
+    explicit PlantInfo(QWidget *parent = nullptr);
+    ~PlantInfo();
     void setName(QString name);
     void update();
     void setDesc(QString desc);
@@ -27,11 +26,10 @@ private:
     QString desc;
     QString date_in;
     QString date_out;
+    Ui::PlantInfo *ui;
 
-
-    Ui::PlantDialog *ui;
 private slots:
     void exitButton_clicked();
 };
 
-#endif // PLANTDIALOG_H
+#endif // PLANTINFO_H

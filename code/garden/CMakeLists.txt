@@ -31,12 +31,15 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 
         calendar.h calendar.cpp calendar.ui
         plants.h plants.cpp plants.ui
-        accwindow.h accwindow.cpp accwindow.ui
-        addcrops.h addcrops.cpp addcrops.ui
+
+
 
         plantsbase.json
         resource.qrc
-        plantdialog.h plantdialog.cpp plantdialog.ui
+
+        accountwin.h accountwin.cpp accountwin.ui
+        plantinfo.h plantinfo.cpp plantinfo.ui
+        dateevent.h dateevent.cpp dateevent.ui
 
 
 

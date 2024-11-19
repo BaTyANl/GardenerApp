@@ -1,34 +1,34 @@
-#ifndef ACCWINDOW_H
-#define ACCWINDOW_H
+#ifndef ACCOUNTWIN_H
+#define ACCOUNTWIN_H
 
-#include <QDialog>
-#include <QInputDialog>
+#include <QWidget>
 #include <QLabel>
 #include "regwindow.h"
 #include "signwindow.h"
-#include "addcrops.h"
 #include <QtCharts/QChartView>
 #include <QtCharts/QValueAxis>
 #include <QtCharts/QLineSeries>
 #include <QtCharts/QDateTimeAxis>
 #include <QDateTime>
+#include <QSpacerItem>
 #include <QGestureEvent>
 
 namespace Ui {
-class AccWindow;
+class AccountWin;
 }
 
-class AccWindow : public QDialog
+class AccountWin : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit AccWindow(QWidget *parent = nullptr);
+    explicit AccountWin(QWidget *parent = nullptr);
     void loadCurrentUser();
-    ~AccWindow();
+    ~AccountWin();
+
 private:
 
-    Ui::AccWindow *ui;
+    Ui::AccountWin *ui;
     RegWindow *regWindow;
     SignWindow *signWindow;
     bool is_signed;
@@ -49,17 +49,15 @@ private:
     QPushButton *cropButton;
     QPushButton *clearButton;
 
-
-
 private slots:
     void regButtonclicked();
     void signButtonclicked();
     void onUserRegistered(const QString& login);
     void onUserNotRegistered();
     void onUserUnRegistered();
-    void openAddEventDialog();
     void exitButtonClicked();
     void updateAxes();
+
 };
 
-#endif // ACCWINDOW_H
+#endif // ACCOUNTWIN_H

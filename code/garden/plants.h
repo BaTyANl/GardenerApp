@@ -1,7 +1,7 @@
 #ifndef PLANTS_H
 #define PLANTS_H
 
-#include "plantdialog.h"
+#include "plantinfo.h"
 #include <QWidget>
 #include <QFile>
 #include <QJsonDocument>
@@ -32,7 +32,7 @@ public:
 
 private:
     QMap<QString, QVariantMap> plantData;
-    PlantDialog *plantDialog;
+    PlantInfo *plantInfoW;
     QMap<QString, QVariantMap> loadPlants();
     Ui::Plants *ui;
     void setupListView(QListView &listView);

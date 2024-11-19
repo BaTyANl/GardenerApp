@@ -27,7 +27,7 @@ public:
 Plants::Plants(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Plants)
-    , plantDialog(new PlantDialog(this))
+    , plantInfoW(new PlantInfo(this))
 {
     ui->setupUi(this);
     this->close();
@@ -42,14 +42,14 @@ void Plants::openWindow(const QModelIndex &index){
     QString description = plantInfo["description"].toString();
     QString date_in = plantInfo["date_in"].toString();
     QString date_out = plantInfo["date_out"].toString();
-    plantDialog->setName(name);
-    plantDialog->setDesc(description);
-    plantDialog->setIn(date_in);
-    plantDialog->setOut(date_out);
-    plantDialog->update();
-    plantDialog->resize(size());
-    plantDialog->show();
-    plantDialog->raise();
+    plantInfoW->setName(name);
+    plantInfoW->setDesc(description);
+    plantInfoW->setIn(date_in);
+    plantInfoW->setOut(date_out);
+    plantInfoW->update();
+    plantInfoW->resize(size());
+    plantInfoW->show();
+    plantInfoW->raise();
 }
 
 void Plants::setupListView(QListView &listView){

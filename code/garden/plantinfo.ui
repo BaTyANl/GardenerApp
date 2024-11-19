@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>PlantDialog</class>
- <widget class="QDialog" name="PlantDialog">
+ <class>PlantInfo</class>
+ <widget class="QWidget" name="PlantInfo">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1160</width>
-    <height>330</height>
+    <width>735</width>
+    <height>614</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Form</string>
   </property>
   <property name="autoFillBackground">
-   <bool>false</bool>
+   <bool>true</bool>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -22,11 +22,9 @@
      <property name="font">
       <font>
        <pointsize>18</pointsize>
+       <italic>true</italic>
        <bold>true</bold>
       </font>
-     </property>
-     <property name="autoFillBackground">
-      <bool>false</bool>
      </property>
      <property name="text">
       <string>TextLabel</string>
@@ -37,11 +35,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QTextEdit" name="textEdit">
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
+    <widget class="QTextEdit" name="textEdit"/>
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
