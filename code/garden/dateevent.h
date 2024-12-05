@@ -4,6 +4,10 @@
 #include <QWidget>
 #include <QDate>
 #include <QString>
+#include <QJsonDocument>
+#include <QJsonArray>
+#include <QJsonObject>
+#include <QFile>
 
 namespace Ui {
 class DateEvent;
@@ -26,6 +30,7 @@ private slots:
 private:
     QDate date;
     QStringList events;
+    void loadEvents();
 
     Ui::DateEvent *ui;
 };

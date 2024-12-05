@@ -12,6 +12,28 @@ Calendar::Calendar(QWidget *parent)
     calendar = new QCalendarWidget(this);
     connect(calendar, &QCalendarWidget::activated, this, &Calendar::onDateSelected);
     deployCalendar();
+    grabGesture(Qt::SwipeGesture);
+}
+
+
+bool Calendar::event(QEvent *event) {
+    if (event->type() == QEvent::Gesture) {
+        QGestureEvent *gestureEvent = static_cast<QGestureEvent*>(event);
+        if (QGesture *swipe = gestureEvent->gesture(Qt::SwipeGesture)) {
+            QSwipeGesture *swipeGesture = static_cast<QSwipeGesture*>(swipe);
+            handleSwipeGesture(swipeGesture);
+            return true;
+        }
+    }
+    return QWidget::event(event);
+}
+
+void Calendar::handleSwipeGesture(QSwipeGesture *swipe) {
+    if (swipe->horizontalDirection() == QSwipeGesture::Left) {
+        calendar->setCurrentPage(calendar->yearShown(), calendar->monthShown() + 1);
+    } else if (swipe->horizontalDirection() == QSwipeGesture::Right) {
+        calendar->setCurrentPage(calendar->yearShown(), calendar->monthShown() - 1);
+    }
 }
 
 void Calendar::exitButton_clicked(){

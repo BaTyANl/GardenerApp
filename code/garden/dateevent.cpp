@@ -9,6 +9,7 @@ DateEvent::DateEvent(QWidget *parent)
     ui->setupUi(this);
     connect(ui->exitButton, &QPushButton::clicked, this, &DateEvent::exitButton_clicked);
     ui->textEdit->clear();
+    //loadEvents();
     if (events.empty()){
         ui->label->setText("События " + date.toString());
         ui->textEdit->append("Событий данного числа нет.");
@@ -23,6 +24,7 @@ DateEvent::DateEvent(QWidget *parent)
 
 void DateEvent::update(){
     ui->textEdit->clear();
+    //loadEvents();
     if (events.empty()){
         ui->label->setText("События " + date.toString());
         ui->textEdit->append("Событий данного числа нет.");

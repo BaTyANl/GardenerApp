@@ -40,6 +40,11 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         accountwin.h accountwin.cpp accountwin.ui
         plantinfo.h plantinfo.cpp plantinfo.ui
         dateevent.h dateevent.cpp dateevent.ui
+        harvesting.h harvesting.cpp harvesting.ui
+
+
+        Android.mk
+
 
 
 

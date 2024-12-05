@@ -76,3 +76,5 @@ int SignWindow::isUserValid(const QString& login, const QString& password){
     }
     return 1;
 }
+
+

@@ -13,6 +13,10 @@
 #include <QStringList>
 #include <QPainter>
 #include <QTextCharFormat>
+#include <QGestureEvent>
+#include <QSwipeGesture>
+#include <QGestureRecognizer>
+#include <QGesture>
 
 namespace Ui {
 class Calendar;
@@ -34,16 +38,18 @@ private:
     QCalendarWidget *calendar;
     QMap<QDate, QStringList> events;
     QMap<QDate, bool> marks;
-
     void loadEvents();
     void applyEventColor(const QDate &date);
 
     DateEvent* dateEvent;
 
+protected:
+    bool event(QEvent *event) override;
 
 private slots:
     void onDateSelected(QDate date);
     void exitButton_clicked();
+    void handleSwipeGesture(QSwipeGesture *swipe);
 
 };
 

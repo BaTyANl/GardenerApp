@@ -6,6 +6,9 @@
 #include <QFile>
 #include <QMessageBox>
 #include <QLineEdit>
+#include <QJsonDocument>
+#include <QJsonArray>
+#include <QJsonObject>
 
 
 namespace Ui {

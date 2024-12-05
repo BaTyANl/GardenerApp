@@ -5,6 +5,7 @@
 #include <QLabel>
 #include "regwindow.h"
 #include "signwindow.h"
+#include "harvesting.h"
 #include <QtCharts/QChartView>
 #include <QtCharts/QValueAxis>
 #include <QtCharts/QLineSeries>
@@ -12,6 +13,7 @@
 #include <QDateTime>
 #include <QSpacerItem>
 #include <QGestureEvent>
+#include <QVector>
 
 namespace Ui {
 class AccountWin;
@@ -28,9 +30,11 @@ public:
 
 private:
 
+    QVector<DataPoint> dataPoint;
     Ui::AccountWin *ui;
     RegWindow *regWindow;
     SignWindow *signWindow;
+    Harvesting *harvesting;
     bool is_signed;
     QLineSeries *series;
     QChart *chart;
@@ -56,7 +60,9 @@ private slots:
     void onUserNotRegistered();
     void onUserUnRegistered();
     void exitButtonClicked();
-    void updateAxes();
+    void clearButtonClicked();
+    void addButtonClicked();
+    void onAdded(const DataPoint& point);
 
 };
 

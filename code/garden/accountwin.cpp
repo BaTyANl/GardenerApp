@@ -6,11 +6,14 @@ AccountWin::AccountWin(QWidget *parent)
     , ui(new Ui::AccountWin)
     , signWindow(new SignWindow(this))
     , regWindow(new RegWindow(this))
+    , harvesting(new Harvesting(this))
 {
     this->close();
     ui->setupUi(this);
     loadCurrentUser();
     connect(ui->exitButton, &QPushButton::clicked, this, &AccountWin::exitButtonClicked);
+    connect(clearButton, &QPushButton::clicked, this, &AccountWin::clearButtonClicked);
+    connect(cropButton, &QPushButton::clicked, this, &AccountWin::addButtonClicked);
 }
 
 void AccountWin::onUserNotRegistered(){
@@ -83,14 +86,38 @@ void AccountWin::onUserRegistered(const QString& login){
 
     series = new QLineSeries();
     chart = new QChart();
+
+    dataPoint.clear();
+    dataPoint.append({QDateTime::fromString("2024-02-03T00:00:00", "yyyy-MM-ddThh:mm:ss"), 10});
+    dataPoint.append({QDateTime::fromString("2024-03-04T00:00:00", "yyyy-MM-ddThh:mm:ss"), 15});
+    dataPoint.append({QDateTime::fromString("2024-05-06T00:00:00", "yyyy-MM-ddThh:mm:ss"), 35});
+    dataPoint.append({QDateTime::fromString("2024-07-01T00:00:00", "yyyy-MM-ddThh:mm:ss"), 12});
+    dataPoint.append({QDateTime::fromString("2024-10-02T00:00:00", "yyyy-MM-ddThh:mm:ss"), 50});
+
+
+
+    for (const DataPoint &point : dataPoint){
+        series->append(point.date.toMSecsSinceEpoch(), point.Value);
+        QGraphicsSimpleTextItem *valueLabel = new QGraphicsSimpleTextItem(QString::number(point.Value));
+        valueLabel->setPos(point.date.toMSecsSinceEpoch(), point.Value);
+    }
+
+    QDateTime minDate = dataPoint.first().date;
+    QDateTime maxDate = dataPoint.first().date;
+
+    for (const DataPoint &point : dataPoint) {
+        if (point.date < minDate) minDate = point.date;
+        if (point.date > maxDate) maxDate = point.date;
+    }
     chart->addSeries(series);
     chart->setTitle("Собранные культуры");
+
     axisX = new QDateTimeAxis;
-    axisX->setFormat("dd-MM-yyyy");
+    axisX->setFormat("yyyy-MM-dd");
     axisX->setTitleText("Дата");
+    axisX->setRange(minDate, maxDate);
     chart->addAxis(axisX, Qt::AlignBottom);
     axisX->setTickCount(2);
-    axisX->setVisible(false);
     series->attachAxis(axisX);
 
     axisY = new QValueAxis;
@@ -105,18 +132,6 @@ void AccountWin::onUserRegistered(const QString& login){
     ui->verticalLayout_3->addWidget(cropButton, 0, Qt::AlignBottom);
     clearButton = new QPushButton("Очистить график");
     ui->verticalLayout_3->addWidget(clearButton, 0, Qt::AlignBottom);
-}
-
-void AccountWin::updateAxes() {
-    if (series->count() > 0) {
-        qreal firstX = series->points().first().x();
-        qreal lastX = series->points().last().x();
-        QDateTime startDateTime = QDateTime::fromMSecsSinceEpoch(static_cast<qint64>(firstX));
-        QDateTime endDateTime = QDateTime::fromMSecsSinceEpoch(static_cast<qint64>(lastX));
-        axisX->setRange(startDateTime, endDateTime);
-        axisY->setRange(0, series->points().last().y() + 10);
-        axisX->setFormat("dd MMM yyyy");
-    }
 }
 
 void AccountWin::regButtonclicked() {
@@ -160,6 +175,26 @@ void AccountWin::exitButtonClicked(){
     this->close();
 }
 
+void AccountWin::clearButtonClicked(){
+    chart->removeAllSeries();
+    dataPoint.clear();
+}
+
+void AccountWin::addButtonClicked(){
+    connect(harvesting, &Harvesting::added, this, &AccountWin::onAdded);
+    harvesting->resize(size());
+    harvesting->show();
+    harvesting->raise();
+}
+
+void AccountWin::onAdded(const DataPoint& point){
+    dataPoint.append(point);
+    series->append(point.date.toMSecsSinceEpoch(), point.Value);
+
+    if (dataPoint.isEmpty()) return;
+
+
+}
 
 AccountWin::~AccountWin()
 {

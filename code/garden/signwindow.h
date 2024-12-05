@@ -4,6 +4,9 @@
 #include <QWidget>
 #include <QMessageBox>
 #include <QFile>
+#include <QJsonDocument>
+#include <QJsonArray>
+#include <QJsonObject>
 
 namespace Ui {
 class SignWindow;
